@@ -57,6 +57,11 @@ const TreeView = () => {
     setMobileMenuOpen(false)
   }
 
+  const onConfirmUnderstood = () => {
+    setModalOpen(false)
+    setMobileMenuOpen(false)
+  }
+
   const buildTree = tree => {
     return tree.map(branch => {
       const branchId = branch.id.toString()
