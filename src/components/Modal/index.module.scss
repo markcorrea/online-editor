@@ -1,0 +1,21 @@
+@import '~assets/styles/_typography.scss';
+@import '~assets/styles/_colors.scss';
+
+.container {
+  background-color: $deepBlack;
+  border: solid thin $lightBlack;
+  color: white;
+  padding: 15px;
+}
+
+.message1 {
+  width: 100%;
+  font-family: $robotoBoldFontFamily;
+  font-size: $bigFontSize;
+}
+
+.message2 {
+  width: 100%;
+  padding: 10px 0;
+  min-height: 60px;
+}

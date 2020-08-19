@@ -1,0 +1,38 @@
+// Variable declarations
+
+$defaultFontFamily: Roboto;
+$robotoBoldFontFamily: Roboto-bold;
+
+$defaultFontSize: 13px; 
+$biggerFontSize: 1.6rem; 
+$bigFontSize: 1.2rem; 
+$mediumFontSize: 0.9rem; 
+$smallFontSize: 0.8rem; 
+$smallerFontSize: 0.7rem; 
+$miniFontSize: 0.6rem;
+$microFontSize: 0.55rem; 
+
+$titleFontWeight: 300;
+$titleLineHeight: 120%;
+$titleLetterSpacing: 1px;
+
+$h1FontSize: 1.6rem; 
+$h2FontSize: 1rem; 
+
+// Exports variables to be used in JS theme definition at assets/themes.
+:export {
+  defaultFontFamily: $defaultFontFamily;
+  robotoBoldFontFamily: $robotoBoldFontFamily;
+  biggerFontSize: $biggerFontSize;
+  bigFontSize: $bigFontSize;
+  defaultFontSize: $defaultFontSize;
+  smallFontSize: $smallFontSize;
+  smallerFontSize: $smallerFontSize;
+  miniFontSize: $miniFontSize;
+  microFontSize: $microFontSize;
+  h1FontSize: $h1FontSize;
+  h2FontSize: $h2FontSize;
+  titleFontWeight: $titleLineHeight;
+  titleLineHeight: $titleLineHeight;
+  titleLetterSpacing: $titleLetterSpacing;
+}

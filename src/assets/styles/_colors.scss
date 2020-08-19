@@ -1,0 +1,28 @@
+$darkGray: #2a2a2a;
+
+// -=-=-=-=-=-=-
+
+$blue: #5244f0;
+$lightBlack: #666666;
+$midBlack: #252525;
+$deepBlack: #151515;
+$gray: #979797;
+$lightGray: #d9d8d8;
+$lightestGray: #f3f3f3;
+
+$gray1: #1e1e1e; //darkest
+$gray2: #252526; //mid
+$gray3: #333333; //lightest
+
+$nGray: gray;
+$nBlue: #0000de;
+$nRed: #d70000;
+
+// Exports variables to be used in JS theme definition at assets/themes.
+:export {
+  darkGray: $darkGray;
+  gray: $gray;
+  lightGray: $lightGray;
+  lightestGray: $lightestGray;
+  nBlue: $nBlue;
+}

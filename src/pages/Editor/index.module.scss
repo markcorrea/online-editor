@@ -1,0 +1,19 @@
+@import '~assets/styles/_colors.scss';
+@import '~assets/styles/_typography.scss';
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $deepBlack;
+  color: white;
+}
+
+.header {
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1 0 auto;
+  display: flex;
+}

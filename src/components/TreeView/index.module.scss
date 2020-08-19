@@ -1,0 +1,23 @@
+@import '~assets/styles/_colors.scss';
+@import '~assets/styles/_typography.scss';
+
+.container {
+  width: 330px;
+  height: 100%;
+  background-color: $gray2;
+  color: $gray;
+
+  .title {
+    font-family: $robotoBoldFontFamily;
+    font-size: $bigFontSize;
+    color: white;
+    padding: 7px 15px;
+    border-bottom: solid thin $lightBlack;
+  }
+
+  .treeContainer {
+    padding: 7px 5px;
+    position: relative;
+    height: 100%;
+  }
+}
