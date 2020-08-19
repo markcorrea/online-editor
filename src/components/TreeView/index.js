@@ -57,7 +57,7 @@ const TreeView = () => {
     setMobileMenuOpen(false)
   }
 
-  const onConfirmUnderstood = () => {
+  const onUnderstood = () => {
     setModalOpen(false)
     setMobileMenuOpen(false)
   }
@@ -105,7 +105,7 @@ const TreeView = () => {
       <Modal
         message1='You have unsaved changes in the current file.'
         message2='Please save the changes or discard them before changing files.'
-        onUnderstood={() => setModalOpen(false)}
+        onUnderstood={() => onUnderstood()}
         open={modalOpen}
       />
     </div>
