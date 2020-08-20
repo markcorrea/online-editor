@@ -20,6 +20,9 @@ const Store = ({children}) => {
   const [state, updateState] = useState(initialState)
   const message = useMessage()
 
+  const loadingTree = isLoading => updateState(prevState => ({...prevState, loadingTree: isLoading}))
+  const loadingFile = isLoading => updateState(prevState => ({...prevState, loadingFile: isLoading}))
+
   const setExpandedNodes = useCallback(
     expandedNodes => {
       updateState(prevState => ({...prevState, expandedNodes}))
@@ -28,25 +31,24 @@ const Store = ({children}) => {
   )
 
   const setFileTree = useCallback(async () => {
-    updateState(prevState => ({...prevState, loadingTree: true}))
+    loadingTree(true)
     const result = await fetchFileTree()
     if (result) {
-      updateState(prevState => ({...prevState, fileTree: result.data, loadingTree: false}))
-      return message.show('File tree loaded successfully!', 'success')
+      updateState(prevState => ({...prevState, fileTree: result.data}))
+      message.show('File tree loaded successfully!', 'success')
+    } else {
+      message.show('There was an error while loading tree.', 'error')
     }
-    updateState(prevState => ({...prevState, loadingTree: false}))
-    return message.show('There was an error while loading tree.', 'error')
+    loadingTree(false)
   }, [updateState, message])
 
   const setMobileMenuOpen = useCallback(mobileMenuOpen => updateState(prevState => ({...prevState, mobileMenuOpen})), [
     updateState,
   ])
 
-  const setLoadingFile = useCallback(loadingFile => updateState(prevState => ({...prevState, loadingFile})), [updateState])
-
   const setCurrentFile = useCallback(
     async id => {
-      updateState(prevState => ({...prevState, loadingFile: true}))
+      loadingFile(true)
       const result = await fetchFileById(id)
       if (result) {
         const newFile = {
@@ -57,14 +59,12 @@ const Store = ({children}) => {
         updateState(prevState => ({
           ...prevState,
           currentFile: newFile,
-          loadingFile: false,
         }))
-        return message.show('File loaded successfully!', 'success')
+        message.show('File loaded successfully!', 'success')
+      } else {
+        message.show('There was an error while loading the file.', 'error')
       }
-      updateState(prevState => ({
-        ...prevState,
-        loadingFile: false,
-      }))
+      loadingFile(false)
     },
     [updateState, message]
   )
@@ -92,7 +92,7 @@ const Store = ({children}) => {
 
   const saveCurrentFile = useCallback(
     async currentFile => {
-      updateState(prevState => ({...prevState, loadingFile: true}))
+      loadingFile(true)
       const result = await updateFileById(currentFile)
       if (result) {
         updateState(prevState => ({
@@ -101,33 +101,31 @@ const Store = ({children}) => {
             ...prevState.currentFile,
             original: prevState.currentFile.content,
           },
-          loadingFile: false,
         }))
-        return message.show('Changes saved!', 'success')
+        message.show('Changes saved!', 'success')
+      } else {
+        message.show('There was an error while saving', 'error')
       }
-
-      updateState(prevState => ({...prevState, loadingFile: false}))
-      return message.show('There was an error while saving', 'error')
+      loadingFile(false)
     },
     [updateState, message]
   )
 
   const deleteCurrentFile = useCallback(
     async currentFile => {
-      updateState(prevState => ({...prevState, loadingFile: true}))
+      loadingFile(true)
       const result = await deleteFileById(currentFile.id)
       if (result) {
         updateState(prevState => ({
           ...prevState,
           currentFile: null,
-          loadingFile: false,
         }))
         message.show('File deleted successfully!', 'success')
-        return setFileTree()
+        setFileTree()
+      } else {
+        message.show('Could not delete this file.', 'error')
       }
-
-      updateState(prevState => ({...prevState, loadingFile: false}))
-      return message.show('Could not delete this file.', 'error')
+      loadingFile(false)
     },
     [updateState, setFileTree, message]
   )
@@ -139,7 +137,6 @@ const Store = ({children}) => {
         setExpandedNodes,
         setMobileMenuOpen,
         setFileTree,
-        setLoadingFile,
         setCurrentFile,
         resetCurrentFile,
         changeCurrentFile,
