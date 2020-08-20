@@ -28,10 +28,12 @@ const Header = () => {
 
   return (
     <div className={clsx(styles.container)}>
-      {!mediaQueryMedium && (
+      {!mediaQueryMedium ? (
         <div className={styles.listMenu} onClick={() => setMobileMenuOpen(true)}>
           <i className='fas fa-list'></i>
         </div>
+      ) : (
+        <div className={styles.appName}>Online Editor</div>
       )}
       {hasChanged && (
         <HeaderButton
