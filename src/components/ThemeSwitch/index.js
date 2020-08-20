@@ -37,7 +37,7 @@ const ThemeSwitch = () => {
   return (
     <div className={styles.container}>
       <Switch className={styles.switch} classes={classes} checked={darkMode} onChange={enterDarkMode} />
-      <div className={styles.title}>Theme</div>
+      <div className={styles.title}>Dark Mode</div>
     </div>
   )
 }
