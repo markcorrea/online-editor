@@ -8,7 +8,7 @@ import {fetchFileTree, fetchFileById, updateFileById, deleteFileById} from 'serv
 const StoreContext = React.createContext(null)
 
 const initialState = {
-  darkMode: true,
+  darkMode: false,
   expandedNodes: [],
   fileTree: [],
   loadingTree: false,

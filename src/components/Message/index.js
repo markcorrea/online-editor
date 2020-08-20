@@ -39,7 +39,7 @@ const MessageWrapper = ({children}) => {
       autoHideDuration={2000}
       anchorOrigin={{
         vertical: 'top',
-        horizontal: 'center',
+        horizontal: 'right',
       }}>
       <MessageComponent>{children}</MessageComponent>
     </SnackbarProvider>
