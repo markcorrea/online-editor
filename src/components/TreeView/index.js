@@ -10,25 +10,43 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
 import {useStore} from 'store'
 
-import {robotoBoldFontFamily} from 'assets/styles/main.module.scss'
+import {selectedTreeItem, backgroundShadow, bigFontSize} from 'assets/styles/main.module.scss'
 import styles from './index.module.scss'
 
-const useStyles = makeStyles({
-  treeViewRoot: {
+const treeViewStyles = makeStyles({
+  root: {
     height: 240,
     flexGrow: 1,
     maxWidth: 400,
   },
-  treeItemSelected: {
-    color: 'white',
-    fontFamily: robotoBoldFontFamily,
+})
+
+const treeItemStyles = makeStyles({
+  root: {
+    '&&:focus': {
+      '& >$content': {
+        backgroundColor: backgroundShadow,
+      },
+    },
   },
+  label: {
+    color: 'white',
+    fontSize: bigFontSize,
+    '&&:hover': {
+      backgroundColor: backgroundShadow,
+    },
+  },
+  selected: {
+    '& $label': {
+      color: selectedTreeItem,
+    },
+  },
+  content: {}, // needed above inside 'focus' > 'content'
 })
 
 const TreeView = () => {
-  const classes = useStyles()
-
-  const [modalOpen, setModalOpen] = useState(false)
+  const treeViewClasses = treeViewStyles()
+  const treeItemClasses = treeItemStyles()
 
   const store = useStore()
   const {
@@ -41,6 +59,8 @@ const TreeView = () => {
     expandedNodes,
     setExpandedNodes,
   } = store
+
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     if (!fileTree.length) {
@@ -65,23 +85,18 @@ const TreeView = () => {
   const buildTree = tree => {
     return tree.map(branch => {
       const branchId = branch.id.toString()
-      if (!branch.isDirectory) {
-        return (
-          <UITreeItem
-            classes={currentFile && currentFile.id === branch.id ? {label: classes.treeItemSelected} : {}}
-            onClick={() => onSelectFile(branch.id)}
-            key={branchId}
-            nodeId={branchId}
-            label={branch.name}
-          />
-        )
-      } else {
-        return (
-          <UITreeItem key={branchId} nodeId={branchId} label={branch.name}>
-            {buildTree(branch.children)}
-          </UITreeItem>
-        )
+
+      const itemProps = {
+        classes: treeItemClasses,
+        key: branchId,
+        nodeId: branchId,
+        label: branch.name,
       }
+      return !branch.isDirectory ? (
+        <UITreeItem {...itemProps} onClick={() => onSelectFile(branch.id)} />
+      ) : (
+        <UITreeItem {...itemProps}>{buildTree(branch.children)}</UITreeItem>
+      )
     })
   }
 
@@ -93,10 +108,11 @@ const TreeView = () => {
           <Spinner />
         ) : (
           <UITreeView
-            classes={{root: classes.treeViewRoot}}
+            classes={treeViewClasses}
             defaultCollapseIcon={<ExpandMoreIcon />}
             defaultExpandIcon={<ChevronRightIcon />}
             expanded={expandedNodes}
+            selected={currentFile && currentFile.id.toString()}
             onNodeToggle={(_, ids) => setExpandedNodes(ids)}>
             {buildTree(fileTree)}
           </UITreeView>

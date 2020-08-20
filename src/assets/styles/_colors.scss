@@ -18,6 +18,9 @@ $nGray: gray;
 $nBlue: #0000de;
 $nRed: #d70000;
 
+$selectedTreeItem: #d6bf78;
+$backgroundShadow: rgba(255, 255, 255, 0.2);
+
 // Exports variables to be used in JS theme definition at assets/themes.
 :export {
   darkGray: $darkGray;
@@ -25,4 +28,6 @@ $nRed: #d70000;
   lightGray: $lightGray;
   lightestGray: $lightestGray;
   nBlue: $nBlue;
+  selectedTreeItem: $selectedTreeItem;
+  backgroundShadow: $backgroundShadow;
 }
