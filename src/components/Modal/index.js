@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
@@ -24,19 +24,22 @@ const rightButton = {
 const Modal = ({message1, message2, onCancel, onConfirm, onUnderstood, open}) => {
   const modalContainer = document.getElementById('modalContainer')
 
+  const ref = useRef('')
+  const focus = () => ref.current.focus()
+
   return ReactDOM.createPortal(
-    <Dialog open={open} maxWidth='sm' fullWidth>
+    <Dialog open={open} maxWidth='sm' fullWidth onBackdropClick={onCancel} onEscapeKeyDown={onCancel} onEntered={focus}>
       <div className={styles.container}>
         <div className={styles.message1}>{message1}</div>
         <div className={styles.message2}>{message2}</div>
         <div>
           {onConfirm && (
-            <Button classes={rightButton} onClick={onConfirm}>
+            <Button ref={ref} classes={rightButton} onClick={onConfirm}>
               Confirm
             </Button>
           )}
           {onUnderstood && (
-            <Button color='cancel' classes={rightButton} onClick={onUnderstood}>
+            <Button ref={ref} color='cancel' classes={rightButton} onClick={onUnderstood}>
               Understood
             </Button>
           )}

@@ -1,4 +1,4 @@
-import React, {memo, useMemo} from 'react'
+import React, {forwardRef, memo, useMemo} from 'react'
 import PropTypes from 'prop-types'
 
 import UIButton from '@material-ui/core/Button'
@@ -6,7 +6,7 @@ import {makeStyles} from '@material-ui/core/styles'
 
 import {darkGray, lightGray, nBlue, robotoBoldFontFamily, defaultFontSize} from 'assets/styles/main.module.scss'
 
-const Button = ({className, children, classes: {root}, onClick, color: buttonColor, type}) => {
+const Button = forwardRef(({className, children, classes: {root}, onClick, color: buttonColor, type}, ref) => {
   const backgroundColor = useMemo(() => {
     if (buttonColor === 'cancel') return darkGray
     return nBlue
@@ -30,11 +30,11 @@ const Button = ({className, children, classes: {root}, onClick, color: buttonCol
   const buttonClasses = useStyles()
 
   return (
-    <UIButton className={className} type={type} classes={buttonClasses} onClick={onClick}>
+    <UIButton className={className} type={type} classes={buttonClasses} onClick={onClick} ref={ref}>
       {children}
     </UIButton>
   )
-}
+})
 
 Button.propTypes = {
   classes: PropTypes.object,

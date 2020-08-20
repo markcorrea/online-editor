@@ -40,6 +40,11 @@
   padding: 0 15px;
   border-radius: 5px;
   cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s;
+  &:hover {
+    opacity: 1;
+  }
   span {
     color: white;
     text-transform: uppercase;
