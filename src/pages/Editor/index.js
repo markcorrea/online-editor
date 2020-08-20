@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Drawer, EditorView, Header, TreeView} from 'components'
+import {Drawer, EditorView, Header, SideMenu} from 'components'
 
 import {mediaQueryMD} from 'assets/styles/_mediaQueries.scss'
 import useMediaQuery from 'utils/mediaQuery'
@@ -19,12 +19,12 @@ const Editor = () => {
       <div className={styles.container}>
         <Header className={styles.header} />
         <div className={styles.content}>
-          {mediaQueryMedium && <TreeView />}
+          {mediaQueryMedium && <SideMenu />}
           <EditorView />
         </div>
       </div>
       <Drawer open={mobileMenuOpen} setOpen={setMobileMenuOpen}>
-        <TreeView />
+        <SideMenu />
       </Drawer>
     </>
   )

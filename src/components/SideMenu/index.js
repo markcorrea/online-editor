@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 
-import {Modal, Spinner} from 'components'
+import {Modal, Spinner, ThemeSwitch} from 'components'
 
 import {makeStyles} from '@material-ui/core/styles'
-import UITreeView from '@material-ui/lab/TreeView'
-import UITreeItem from '@material-ui/lab/TreeItem'
+import TreeView from '@material-ui/lab/TreeView'
+import TreeItem from '@material-ui/lab/TreeItem'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
@@ -44,7 +44,7 @@ const treeItemStyles = makeStyles({
   content: {}, // needed above inside 'focus' > 'content'
 })
 
-const TreeView = () => {
+const SideMenu = () => {
   const treeViewClasses = treeViewStyles()
   const treeItemClasses = treeItemStyles()
 
@@ -93,21 +93,22 @@ const TreeView = () => {
         label: branch.name,
       }
       return !branch.isDirectory ? (
-        <UITreeItem {...itemProps} onClick={() => onSelectFile(branch.id)} />
+        <TreeItem {...itemProps} onClick={() => onSelectFile(branch.id)} />
       ) : (
-        <UITreeItem {...itemProps}>{buildTree(branch.children)}</UITreeItem>
+        <TreeItem {...itemProps}>{buildTree(branch.children)}</TreeItem>
       )
     })
   }
 
   return (
     <div className={styles.container}>
+      <ThemeSwitch />
       <div className={styles.title}>Files</div>
       <div className={styles.treeContainer}>
         {loadingTree ? (
           <Spinner />
         ) : (
-          <UITreeView
+          <TreeView
             classes={treeViewClasses}
             defaultCollapseIcon={<ExpandMoreIcon />}
             defaultExpandIcon={<ChevronRightIcon />}
@@ -115,7 +116,7 @@ const TreeView = () => {
             selected={currentFile && currentFile.id.toString()}
             onNodeToggle={(_, ids) => setExpandedNodes(ids)}>
             {buildTree(fileTree)}
-          </UITreeView>
+          </TreeView>
         )}
       </div>
       <Modal
@@ -128,4 +129,4 @@ const TreeView = () => {
   )
 }
 
-export default TreeView
+export default SideMenu

@@ -1,0 +1,15 @@
+@import '~assets/styles/_colors.scss';
+@import '~assets/styles/_typography.scss';
+
+.container {
+  font-family: $robotoBoldFontFamily;
+  font-size: $bigFontSize;
+  color: white;
+  .title {
+    padding: 10px;
+  }
+  .switch {
+    float: right;
+    margin-top: 3px;
+  }
+}

@@ -21,6 +21,24 @@ $nRed: #d70000;
 $selectedTreeItem: #d6bf78;
 $backgroundShadow: rgba(255, 255, 255, 0.2);
 
+// =-=-=-=-=-=-DARK/LIGHT THEME DEFINITIONS =-=-=-=-=-=-=-
+
+$lightDefaultFontColor: rgba(0, 0, 0, 0.87);
+
+$darkDefaultFontColor: white;
+$darkGrayFontColor: rgba(255, 255, 255, 0.7);
+
+$disabledButtonColor: rgba(0, 0, 0, 0.26);
+$disabledButtonBackground: rgba(0, 0, 0, 0.12);
+$buttonGreen: #00ad52;
+$buttonGray: #e0e0e0;
+$buttonBlue: #1976d2;
+$buttonRed: rgb(220, 0, 78);
+
+$grayLo: #333333; //lightest
+$grayMi: #252526; //mid
+$grayHi: #1e1e1e; //darkest
+
 // Exports variables to be used in JS theme definition at assets/themes.
 :export {
   darkGray: $darkGray;
@@ -30,4 +48,19 @@ $backgroundShadow: rgba(255, 255, 255, 0.2);
   nBlue: $nBlue;
   selectedTreeItem: $selectedTreeItem;
   backgroundShadow: $backgroundShadow;
+
+  // =-=-=-=-=-=-DARK/LIGHT THEME EXPORTS =-=-=-=-=-=-=-
+  lightDefaultFontColor: $lightDefaultFontColor;
+  darkDefaultFontColor: $darkDefaultFontColor;
+  darkGrayFontColor: $darkGrayFontColor;
+
+  disabledButtonColor: $disabledButtonColor;
+  disabledButtonBackground: $disabledButtonBackground;
+  buttonGreen: $buttonGreen;
+  buttonGray: $buttonGray;
+  buttonBlue: $buttonBlue;
+  buttonRed: $buttonRed;
+  grayLo: $grayLo;
+  grayMi: $grayMi;
+  grayHi: $grayHi;
 }
