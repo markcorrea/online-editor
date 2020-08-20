@@ -19,6 +19,9 @@ ace.config.set('themePath', '')
 
 const NoFileLoaded = () => (
   <div className={styles.noFileLoaded}>
+    <div className={styles.fan}>
+      <i className='fas fa-fan'></i>
+    </div>
     <span className={styles.upperSentence}>There&#39;s no file loaded at the moment.</span>
     <br />
     Select a file on the File Tree and start coding!
@@ -27,7 +30,7 @@ const NoFileLoaded = () => (
 
 const EditorView = () => {
   const store = useStore()
-  const {loadingFile, currentFile, changeCurrentFile} = store
+  const {darkMode, loadingFile, currentFile, changeCurrentFile} = store
 
   return (
     <div className={styles.container}>
@@ -38,7 +41,7 @@ const EditorView = () => {
       ) : (
         <AceEditor
           mode='java'
-          theme='terminal'
+          theme={darkMode ? 'terminal' : 'tomorrow'}
           onChange={newValue => changeCurrentFile(newValue)}
           value={(currentFile && currentFile.content) || ''}
           name='editor'

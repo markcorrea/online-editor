@@ -4,20 +4,36 @@
 .container {
   width: 330px;
   height: 100%;
-  background-color: $gray2;
+  border-right: solid thin $lightTransparentMi;
+  background-color: $lightBackground;
   color: $gray;
+  padding: 10px 10px;
+  position: relative;
+  height: 100%;
 
   .title {
     font-family: $robotoBoldFontFamily;
     font-size: $bigFontSize;
-    color: white;
-    padding: 7px 15px 0;
-    border-top: solid thin $lightBlack;
+    color: $lightDefaultFontColor;
+    padding: 10px 5px 5px;
+    border-top: solid thin $lightTransparentMi;
   }
+}
 
-  .treeContainer {
-    padding: 10px 10px;
-    position: relative;
-    height: 100%;
+.test {
+  width: 100px;
+  height: 100px;
+  border: solid thin white;
+  background-color: red;
+}
+
+:global(body.dark) {
+  .container {
+    border-right: solid thin $darkTransparentMi;
+    background-color: $darkBackground;
+  }
+  .title {
+    border-top: solid thin $darkTransparentMi;
+    color: $darkDefaultFontColor;
   }
 }

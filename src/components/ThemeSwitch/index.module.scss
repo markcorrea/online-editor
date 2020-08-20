@@ -4,12 +4,17 @@
 .container {
   font-family: $robotoBoldFontFamily;
   font-size: $bigFontSize;
-  color: white;
+  color: $lightDefaultFontColor;
   .title {
-    padding: 10px;
+    padding: 10px 5px;
   }
   .switch {
     float: right;
-    margin-top: 3px;
+  }
+}
+
+:global(body.dark) {
+  .title {
+    color: $darkDefaultFontColor;
   }
 }

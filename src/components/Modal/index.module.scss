@@ -2,20 +2,40 @@
 @import '~assets/styles/_colors.scss';
 
 .container {
-  background-color: $deepBlack;
-  border: solid thin $lightBlack;
-  color: white;
-  padding: 15px;
+  background-color: $lightBackground;
+  // border: solid thin $lightTransparentLo;
+  border-radius: 4px;
+  color: $lightDefaultFontColor;
+  padding: 16px 24px
 }
 
 .message1 {
   width: 100%;
-  font-family: $robotoBoldFontFamily;
-  font-size: $bigFontSize;
+  font-family: $defaultFontFamily;
+  font-weight: 600;
+  font-size: $biggerFontSize;
 }
 
 .message2 {
   width: 100%;
-  padding: 10px 0;
   min-height: 60px;
+  padding: 10px 0;
+  font-size: $bigFontSize;
+  color: $lightGrayFontColor;
+}
+
+.buttons {
+  text-align: right;
+  margin-top: 20px;
+}
+
+:global(body.dark) {
+  .container {
+    background-color: $darkBackground;
+    border: solid thin $darkTransparentLo;
+    color: $darkDefaultFontColor;
+  }
+  .message2 {
+    color: $darkGrayFontColor;
+  }
 }

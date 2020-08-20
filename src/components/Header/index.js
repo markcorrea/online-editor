@@ -54,7 +54,7 @@ const Header = () => {
       )}
       <Modal
         message1='Are you sure you want to delete?'
-        message2='By deleting, you cannot recover this data.'
+        message2='If you choose to delete this file, this data cannot be recovered.'
         onCancel={() => setModalOpen(false)}
         onConfirm={() => confirmDelete(false)}
         open={modalOpen}

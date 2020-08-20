@@ -4,33 +4,53 @@ import PropTypes from 'prop-types'
 import UIButton from '@material-ui/core/Button'
 import {makeStyles} from '@material-ui/core/styles'
 
-import {darkGray, lightGray, nBlue, robotoBoldFontFamily, defaultFontSize} from 'assets/styles/main.module.scss'
+import {useStore} from 'store'
+
+import {
+  darkTransparentMi,
+  darkDefaultFontColor,
+  bluePrimary,
+  robotoBoldFontFamily,
+  defaultFontSize,
+} from 'assets/styles/main.module.scss'
 
 const Button = forwardRef(({className, children, classes: {root}, onClick, color: buttonColor, type}, ref) => {
+  const store = useStore()
+  const {darkMode} = store
+
   const backgroundColor = useMemo(() => {
-    if (buttonColor === 'cancel') return darkGray
-    return nBlue
-  }, [buttonColor])
+    if (buttonColor === 'cancel') return darkMode ? darkTransparentMi : 'transparent'
+    return bluePrimary
+  }, [buttonColor, darkMode])
+
+  const color = useMemo(() => {
+    if (buttonColor === 'cancel') return darkMode ? darkDefaultFontColor : bluePrimary
+    return darkDefaultFontColor
+  }, [buttonColor, darkMode])
 
   const useStyles = makeStyles({
     root: {
       backgroundColor: backgroundColor,
       border: `solid thin transparent`,
-      color: lightGray,
+      color: color,
       fontSize: defaultFontSize,
       lineHeight: defaultFontSize,
       borderRadius: '5px',
       padding: '11px 20px 9px',
       minWidth: '200px',
       fontFamily: robotoBoldFontFamily,
+      '&:hover': {
+        color: darkMode ? darkDefaultFontColor : bluePrimary,
+      },
       ...root,
     },
+    label: {},
   })
 
-  const buttonClasses = useStyles()
+  const classes = useStyles()
 
   return (
-    <UIButton className={className} type={type} classes={buttonClasses} onClick={onClick} ref={ref}>
+    <UIButton className={className} type={type} classes={classes} onClick={onClick} ref={ref}>
       {children}
     </UIButton>
   )

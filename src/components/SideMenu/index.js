@@ -10,7 +10,15 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
 import {useStore} from 'store'
 
-import {selectedTreeItem, backgroundShadow, bigFontSize} from 'assets/styles/main.module.scss'
+import {
+  lightDefaultFontColor,
+  darkDefaultFontColor,
+  lightSelectedTreeItem,
+  darkSelectedTreeItem,
+  robotoBoldFontFamily,
+  backgroundShadow,
+  bigFontSize,
+} from 'assets/styles/main.module.scss'
 import styles from './index.module.scss'
 
 const treeViewStyles = makeStyles({
@@ -21,35 +29,10 @@ const treeViewStyles = makeStyles({
   },
 })
 
-const treeItemStyles = makeStyles({
-  root: {
-    '&&:focus': {
-      '& >$content': {
-        backgroundColor: backgroundShadow,
-      },
-    },
-  },
-  label: {
-    color: 'white',
-    fontSize: bigFontSize,
-    '&&:hover': {
-      backgroundColor: backgroundShadow,
-    },
-  },
-  selected: {
-    '& $label': {
-      color: selectedTreeItem,
-    },
-  },
-  content: {}, // needed above inside 'focus' > 'content'
-})
-
 const SideMenu = () => {
-  const treeViewClasses = treeViewStyles()
-  const treeItemClasses = treeItemStyles()
-
   const store = useStore()
   const {
+    darkMode,
     setMobileMenuOpen,
     loadingTree,
     fileTree,
@@ -59,6 +42,33 @@ const SideMenu = () => {
     expandedNodes,
     setExpandedNodes,
   } = store
+
+  const treeItemStyles = makeStyles({
+    root: {
+      '&&:focus': {
+        '& >$content': {
+          backgroundColor: backgroundShadow,
+        },
+      },
+    },
+    label: {
+      color: darkMode ? darkDefaultFontColor : lightDefaultFontColor,
+      fontSize: bigFontSize,
+      '&&:hover': {
+        backgroundColor: backgroundShadow,
+      },
+    },
+    selected: {
+      '& $label': {
+        color: darkMode ? darkSelectedTreeItem : lightSelectedTreeItem,
+        fontFamily: robotoBoldFontFamily,
+      },
+    },
+    content: {}, // needed above inside 'focus' > 'content'
+  })
+
+  const treeViewClasses = treeViewStyles()
+  const treeItemClasses = treeItemStyles()
 
   const [modalOpen, setModalOpen] = useState(false)
 
@@ -102,12 +112,12 @@ const SideMenu = () => {
 
   return (
     <div className={styles.container}>
-      <ThemeSwitch />
-      <div className={styles.title}>Files</div>
-      <div className={styles.treeContainer}>
-        {loadingTree ? (
-          <Spinner />
-        ) : (
+      {loadingTree ? (
+        <Spinner />
+      ) : (
+        <>
+          <ThemeSwitch />
+          <div className={styles.title}>Files</div>
           <TreeView
             classes={treeViewClasses}
             defaultCollapseIcon={<ExpandMoreIcon />}
@@ -117,8 +127,8 @@ const SideMenu = () => {
             onNodeToggle={(_, ids) => setExpandedNodes(ids)}>
             {buildTree(fileTree)}
           </TreeView>
-        )}
-      </div>
+        </>
+      )}
       <Modal
         message1='You have unsaved changes in the current file.'
         message2='Please save the changes or discard them before changing files.'

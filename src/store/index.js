@@ -8,7 +8,7 @@ import {fetchFileTree, fetchFileById, updateFileById, deleteFileById} from 'serv
 const StoreContext = React.createContext(null)
 
 const initialState = {
-  darkTheme: false,
+  darkMode: true,
   expandedNodes: [],
   fileTree: [],
   loadingTree: false,
@@ -24,7 +24,7 @@ const Store = ({children}) => {
   const loadingTree = isLoading => updateState(prevState => ({...prevState, loadingTree: isLoading}))
   const loadingFile = isLoading => updateState(prevState => ({...prevState, loadingFile: isLoading}))
 
-  const changeTheme = () => updateState(prevState => ({...prevState, darkTheme: !prevState.darkTheme}))
+  const enterDarkMode = () => updateState(prevState => ({...prevState, darkMode: !prevState.darkMode}))
 
   const setExpandedNodes = useCallback(
     expandedNodes => {
@@ -137,7 +137,7 @@ const Store = ({children}) => {
     <StoreContext.Provider
       value={{
         ...state,
-        changeTheme,
+        enterDarkMode,
         setExpandedNodes,
         setMobileMenuOpen,
         setFileTree,

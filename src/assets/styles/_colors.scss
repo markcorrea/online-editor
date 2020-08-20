@@ -18,22 +18,30 @@ $nGray: gray;
 $nBlue: #0000de;
 $nRed: #d70000;
 
-$selectedTreeItem: #d6bf78;
 $backgroundShadow: rgba(255, 255, 255, 0.2);
 
 // =-=-=-=-=-=-DARK/LIGHT THEME DEFINITIONS =-=-=-=-=-=-=-
 
 $lightDefaultFontColor: rgba(0, 0, 0, 0.87);
-
+$lightGrayFontColor: gray;
 $darkDefaultFontColor: white;
 $darkGrayFontColor: rgba(255, 255, 255, 0.7);
 
-$disabledButtonColor: rgba(0, 0, 0, 0.26);
-$disabledButtonBackground: rgba(0, 0, 0, 0.12);
+$darkBackground: #212121;
+$lightBackground: white;
+
+$darkTransparentLo: rgba(255, 255, 255, 0.26);
+$darkTransparentMi: rgba(255, 255, 255, 0.12);
+$lightTransparentLo: rgba(0, 0, 0, 0.26);
+$lightTransparentMi: rgba(0, 0, 0, 0.12);
+
+$darkSelectedTreeItem: #d6bf78;
+$lightSelectedTreeItem: #1976d2;
+
 $buttonGreen: #00ad52;
 $buttonGray: #e0e0e0;
-$buttonBlue: #1976d2;
-$buttonRed: rgb(220, 0, 78);
+$bluePrimary: #1976d2;
+$redSecondary: rgb(220, 0, 78);
 
 $grayLo: #333333; //lightest
 $grayMi: #252526; //mid
@@ -46,20 +54,29 @@ $grayHi: #1e1e1e; //darkest
   lightGray: $lightGray;
   lightestGray: $lightestGray;
   nBlue: $nBlue;
-  selectedTreeItem: $selectedTreeItem;
   backgroundShadow: $backgroundShadow;
 
   // =-=-=-=-=-=-DARK/LIGHT THEME EXPORTS =-=-=-=-=-=-=-
   lightDefaultFontColor: $lightDefaultFontColor;
+  lightGrayFontColor: $lightGrayFontColor;
   darkDefaultFontColor: $darkDefaultFontColor;
   darkGrayFontColor: $darkGrayFontColor;
 
-  disabledButtonColor: $disabledButtonColor;
-  disabledButtonBackground: $disabledButtonBackground;
+  darkSelectedTreeItem: $darkSelectedTreeItem;
+  lightSelectedTreeItem: $lightSelectedTreeItem;
+
+  darkBackground: $darkBackground;
+  lightBackground: $lightBackground;
+
+  darkTransparentLo: $darkTransparentLo;
+  darkTransparentMi: $darkTransparentMi;
+  lightTransparentLo: $lightTransparentLo;
+  lightTransparentMi: $lightTransparentMi;
+
   buttonGreen: $buttonGreen;
   buttonGray: $buttonGray;
-  buttonBlue: $buttonBlue;
-  buttonRed: $buttonRed;
+  bluePrimary: $bluePrimary;
+  redSecondary: $redSecondary;
   grayLo: $grayLo;
   grayMi: $grayMi;
   grayHi: $grayHi;

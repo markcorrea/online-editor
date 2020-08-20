@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import {Button} from 'components'
 
+import {makeStyles} from '@material-ui/core/styles'
 import Dialog from '@material-ui/core/Dialog'
 
 import styles from './index.module.scss'
@@ -16,36 +17,49 @@ const buttonClass = {
 const rightButton = {
   root: {
     ...buttonClass,
-    float: 'right',
     marginLeft: '15px',
   },
 }
 
+const useStyles = makeStyles({
+  paper: {
+    borderRadius: '5px',
+  },
+})
+
 const Modal = ({message1, message2, onCancel, onConfirm, onUnderstood, open}) => {
   const modalContainer = document.getElementById('modalContainer')
+  const classes = useStyles()
 
   const ref = useRef('')
   const focus = () => ref.current.focus()
 
   return ReactDOM.createPortal(
-    <Dialog open={open} maxWidth='sm' fullWidth onBackdropClick={onCancel} onEscapeKeyDown={onCancel} onEntered={focus}>
+    <Dialog
+      classes={classes}
+      open={open}
+      maxWidth='sm'
+      fullWidth
+      onBackdropClick={onCancel || onUnderstood}
+      onEscapeKeyDown={onCancel || onUnderstood}
+      onEntered={focus}>
       <div className={styles.container}>
         <div className={styles.message1}>{message1}</div>
         <div className={styles.message2}>{message2}</div>
-        <div>
+        <div className={styles.buttons}>
+          {onCancel && (
+            <Button color='cancel' classes={rightButton} onClick={onCancel}>
+              Cancel
+            </Button>
+          )}
           {onConfirm && (
             <Button ref={ref} classes={rightButton} onClick={onConfirm}>
               Confirm
             </Button>
           )}
           {onUnderstood && (
-            <Button ref={ref} color='cancel' classes={rightButton} onClick={onUnderstood}>
+            <Button ref={ref} classes={rightButton} onClick={onUnderstood}>
               Understood
-            </Button>
-          )}
-          {onCancel && (
-            <Button color='cancel' classes={rightButton} onClick={onCancel}>
-              Cancel
             </Button>
           )}
         </div>

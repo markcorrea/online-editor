@@ -5,7 +5,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: $deepBlack;
+  background-color: $lightBackground;
   color: white;
 }
 
@@ -16,4 +16,10 @@
 .content {
   flex: 1 0 auto;
   display: flex;
+}
+
+:global(body.dark) {
+  .container {
+    background-color: $darkBackground;
+  }
 }

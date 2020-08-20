@@ -7,7 +7,7 @@
 }
 
 .noFileLoaded {
-  height: 100px;
+  height: 300px;
   text-align: center;
   position: absolute;
   top: 0;
@@ -15,11 +15,39 @@
   left: 0;
   right: 0;
   margin: auto;
-  color: $gray;
+  color: $lightTransparentLo;
+
+  .fan {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    margin: 30px 0;
+    i {
+      width: 150px;
+      height: 150px;
+      font-size: 150px;
+      color: $lightTransparentMi;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
 }
 
 .upperSentence {
   font-family: $robotoBoldFontFamily;
   font-size: $biggerFontSize;
   padding: 10px;
+}
+
+:global(body.dark) {
+  .noFileLoaded {
+    color: $darkTransparentLo;
+    .fan i {
+      color: $darkTransparentLo;
+    }
+  }
 }

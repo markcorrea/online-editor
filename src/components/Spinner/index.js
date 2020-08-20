@@ -5,7 +5,7 @@ import styles from './index.module.scss'
 const Spinner = () => {
   return (
     <div className={styles.container}>
-      <i className='fas fa-cog'></i>
+      <i className='fas fa-fan'></i>
     </div>
   )
 }
