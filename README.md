@@ -1,5 +1,3 @@
-<img alt='fan' src='https://github.com/markcorrea/online-editor/blob/master/readme/fan.png' />
-
 # Online Editor
 
 The online version can be seen here: https://onlineeditor.netlify.app
