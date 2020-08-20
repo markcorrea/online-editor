@@ -57,12 +57,12 @@ const Button = forwardRef(({className, children, classes: {root}, onClick, color
 })
 
 Button.propTypes = {
-  classes: PropTypes.object,
+  className: PropTypes.string,
   children: PropTypes.string,
+  classes: PropTypes.object,
   onClick: PropTypes.func,
   color: PropTypes.string,
   type: PropTypes.string,
-  className: PropTypes.string,
 }
 
 Button.defaultProps = {

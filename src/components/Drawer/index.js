@@ -3,13 +3,11 @@ import PropTypes from 'prop-types'
 
 import UIDrawer from '@material-ui/core/Drawer'
 
-const Drawer = ({children, open, setOpen}) => {
-  return (
-    <UIDrawer open={open} anchor='left' onClose={() => setOpen(false)}>
-      {children}
-    </UIDrawer>
-  )
-}
+const Drawer = ({children, open, setOpen}) => (
+  <UIDrawer open={open} anchor='left' onClose={() => setOpen(false)}>
+    {children}
+  </UIDrawer>
+)
 
 Drawer.propTypes = {
   children: PropTypes.element.isRequired,

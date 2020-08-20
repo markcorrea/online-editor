@@ -9,14 +9,10 @@ import Dialog from '@material-ui/core/Dialog'
 
 import styles from './index.module.scss'
 
-const buttonClass = {
-  minWidth: 'initial',
-  maxWidth: '200px',
-}
-
 const rightButton = {
   root: {
-    ...buttonClass,
+    minWidth: 'initial',
+    maxWidth: '200px',
     marginLeft: '15px',
   },
 }

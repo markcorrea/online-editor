@@ -26,6 +26,10 @@ const Store = ({children}) => {
 
   const enterDarkMode = () => updateState(prevState => ({...prevState, darkMode: !prevState.darkMode}))
 
+  const setMobileMenuOpen = useCallback(mobileMenuOpen => updateState(prevState => ({...prevState, mobileMenuOpen})), [
+    updateState,
+  ])
+
   const setExpandedNodes = useCallback(
     expandedNodes => {
       updateState(prevState => ({...prevState, expandedNodes}))
@@ -45,23 +49,17 @@ const Store = ({children}) => {
     loadingTree(false)
   }, [updateState, message])
 
-  const setMobileMenuOpen = useCallback(mobileMenuOpen => updateState(prevState => ({...prevState, mobileMenuOpen})), [
-    updateState,
-  ])
-
   const setCurrentFile = useCallback(
     async id => {
       loadingFile(true)
       const result = await fetchFileById(id)
       if (result) {
-        const newFile = {
-          ...result.data,
-          original: result.data.content,
-        }
-
         updateState(prevState => ({
           ...prevState,
-          currentFile: newFile,
+          currentFile: {
+            ...result.data,
+            original: result.data.content,
+          },
         }))
         message.show('File loaded successfully!', 'success')
       } else {

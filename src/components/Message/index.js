@@ -29,7 +29,7 @@ const MessageComponent = ({children}) => {
   return <MessageContext.Provider value={{show}}>{children}</MessageContext.Provider>
 }
 
-const MessageWrapper = ({children}) => {
+const MessageWrapper = props => {
   const classes = useStyles()
 
   return (
@@ -41,7 +41,7 @@ const MessageWrapper = ({children}) => {
         vertical: 'top',
         horizontal: 'right',
       }}>
-      <MessageComponent>{children}</MessageComponent>
+      <MessageComponent {...props} />
     </SnackbarProvider>
   )
 }

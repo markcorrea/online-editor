@@ -29,21 +29,8 @@ const treeViewStyles = makeStyles({
   },
 })
 
-const SideMenu = () => {
-  const store = useStore()
-  const {
-    darkMode,
-    setMobileMenuOpen,
-    loadingTree,
-    fileTree,
-    setFileTree,
-    currentFile,
-    setCurrentFile,
-    expandedNodes,
-    setExpandedNodes,
-  } = store
-
-  const treeItemStyles = makeStyles({
+const treeItemStyles = darkMode =>
+  makeStyles({
     root: {
       '&&:focus': {
         '& >$content': {
@@ -67,8 +54,22 @@ const SideMenu = () => {
     content: {}, // needed above inside 'focus' > 'content'
   })
 
+const SideMenu = () => {
+  const store = useStore()
+  const {
+    darkMode,
+    setMobileMenuOpen,
+    loadingTree,
+    fileTree,
+    setFileTree,
+    currentFile,
+    setCurrentFile,
+    expandedNodes,
+    setExpandedNodes,
+  } = store
+
   const treeViewClasses = treeViewStyles()
-  const treeItemClasses = treeItemStyles()
+  const treeItemClasses = treeItemStyles(darkMode)()
 
   const [modalOpen, setModalOpen] = useState(false)
 

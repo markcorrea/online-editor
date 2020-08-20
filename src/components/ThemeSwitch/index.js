@@ -1,13 +1,22 @@
 import React, {useEffect} from 'react'
 
 import Switch from '@material-ui/core/Switch'
-
 import {makeStyles} from '@material-ui/core/styles'
 
-import {grayLo, redSecondary, bluePrimary} from 'assets/styles/main.module.scss'
 import {useStore} from 'store'
 
+import {grayLo, redSecondary, bluePrimary} from 'assets/styles/main.module.scss'
 import styles from './index.module.scss'
+
+const useStyles = darkMode =>
+  makeStyles({
+    track: {
+      backgroundColor: darkMode ? redSecondary : grayLo,
+    },
+    thumb: {
+      backgroundColor: darkMode ? redSecondary : bluePrimary,
+    },
+  })
 
 const ThemeSwitch = () => {
   const store = useStore()
@@ -23,16 +32,7 @@ const ThemeSwitch = () => {
     }
   }, [darkMode])
 
-  const useStyles = makeStyles({
-    track: {
-      backgroundColor: darkMode ? redSecondary : grayLo,
-    },
-    thumb: {
-      backgroundColor: darkMode ? redSecondary : bluePrimary,
-    },
-  })
-
-  const classes = useStyles()
+  const classes = useStyles(darkMode)()
 
   return (
     <div className={styles.container}>
