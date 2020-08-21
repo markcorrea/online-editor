@@ -38,7 +38,7 @@ const MessageWrapper = props => {
       maxSnack={10}
       autoHideDuration={2000}
       anchorOrigin={{
-        vertical: 'top',
+        vertical: 'bottom',
         horizontal: 'right',
       }}>
       <MessageComponent {...props} />

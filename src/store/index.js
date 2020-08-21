@@ -93,7 +93,6 @@ const Store = ({children}) => {
 
   const saveCurrentFile = useCallback(
     async currentFile => {
-      loadingFile(true)
       const result = await updateFileById(currentFile)
       if (result) {
         updateState(prevState => ({
@@ -107,7 +106,6 @@ const Store = ({children}) => {
       } else {
         message.show('There was an error while saving', 'error')
       }
-      loadingFile(false)
     },
     [updateState, message]
   )
