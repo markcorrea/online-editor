@@ -8,6 +8,10 @@ import TreeItem from '@material-ui/lab/TreeItem'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
+import {mediaQueryMD} from 'assets/styles/_mediaQueries.scss'
+import useMediaQuery from 'utils/mediaQuery'
+
+import dragMenu from './draggable'
 import {useStore} from 'store'
 
 import {
@@ -25,7 +29,7 @@ const treeViewStyles = makeStyles({
   root: {
     height: 240,
     flexGrow: 1,
-    maxWidth: 400,
+    width: '100%',
   },
 })
 
@@ -55,6 +59,7 @@ const treeItemStyles = darkMode =>
   })
 
 const SideMenu = () => {
+  const mediaQueryMedium = useMediaQuery('min', mediaQueryMD)
   const store = useStore()
   const {
     darkMode,
@@ -66,6 +71,8 @@ const SideMenu = () => {
     setCurrentFile,
     expandedNodes,
     setExpandedNodes,
+    menuWidth,
+    setMenuWidth,
   } = store
 
   const treeViewClasses = treeViewStyles()
@@ -112,7 +119,7 @@ const SideMenu = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{width: `${menuWidth}px`}}>
       {loadingTree ? (
         <Spinner />
       ) : (
@@ -128,12 +135,13 @@ const SideMenu = () => {
             onNodeToggle={(_, ids) => setExpandedNodes(ids)}>
             {buildTree(fileTree)}
           </TreeView>
+          {mediaQueryMedium && <div className={styles.draggableBorder} onMouseDown={() => dragMenu(setMenuWidth)} />}
         </>
       )}
       <Modal
         message1='You have unsaved changes in the current file.'
         message2='Please save the changes or discard them before changing files.'
-        onUnderstood={() => onUnderstood()}
+        onUnderstood={onUnderstood}
         open={modalOpen}
       />
     </div>

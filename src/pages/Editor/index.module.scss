@@ -1,4 +1,5 @@
 @import '~assets/styles/_colors.scss';
+@import '~assets/styles/_mediaQueries.scss';
 @import '~assets/styles/_typography.scss';
 
 .container {
@@ -14,8 +15,11 @@
 }
 
 .content {
-  flex: 1 0 auto;
-  display: flex;
+  height: 100%;
+  @include media-breakpoint-up(md) {
+    flex: 1 0 auto;
+    display: flex;
+  }
 }
 
 :global(body.dark) {

@@ -9,6 +9,7 @@ const StoreContext = React.createContext(null)
 
 const initialState = {
   darkMode: false,
+  menuWidth: 330,
   expandedNodes: [],
   fileTree: [],
   loadingTree: false,
@@ -25,6 +26,8 @@ const Store = ({children}) => {
   const loadingFile = isLoading => updateState(prevState => ({...prevState, loadingFile: isLoading}))
 
   const enterDarkMode = () => updateState(prevState => ({...prevState, darkMode: !prevState.darkMode}))
+
+  const setMenuWidth = menuWidth => updateState(prevState => ({...prevState, menuWidth}))
 
   const setMobileMenuOpen = useCallback(mobileMenuOpen => updateState(prevState => ({...prevState, mobileMenuOpen})), [
     updateState,
@@ -134,6 +137,7 @@ const Store = ({children}) => {
       value={{
         ...state,
         enterDarkMode,
+        setMenuWidth,
         setExpandedNodes,
         setMobileMenuOpen,
         setFileTree,

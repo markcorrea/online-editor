@@ -1,15 +1,20 @@
 @import '~assets/styles/_colors.scss';
+@import '~assets/styles/_mediaQueries.scss';
 @import '~assets/styles/_typography.scss';
 
 .container {
-  width: 330px;
   height: 100%;
-  border-right: solid thin $lightTransparentMi;
   background-color: $lightBackground;
   color: $lightGrayFontColor;
   padding: 10px 10px;
   position: relative;
   height: 100%;
+  border-right: solid thin $lightTransparentMi;
+
+  @include media-breakpoint-up(md) {
+    float: left;
+    border-right: solid 0px transparent;
+  }
 
   .title {
     font-family: $robotoBoldFontFamily;
@@ -18,22 +23,33 @@
     padding: 10px 5px 5px;
     border-top: solid thin $lightTransparentMi;
   }
-}
 
-.test {
-  width: 100px;
-  height: 100px;
-  border: solid thin white;
-  background-color: red;
+  .draggableBorder {
+    width: 6px;
+    height: 100%;
+    border-right: solid thin $lightTransparentMi;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    cursor: ew-resize;
+  }
 }
 
 :global(body.dark) {
   .container {
-    border-right: solid thin $darkTransparentMi;
     background-color: $darkBackground;
+    border-right: solid thin $darkTransparentMi;
+    @include media-breakpoint-up(md) {
+      border-right: solid 0px transparent;
+    }
   }
   .title {
     border-top: solid thin $darkTransparentMi;
     color: $darkDefaultFontColor;
+  }
+  .draggableBorder {
+    border-right: solid thin $darkTransparentMi;
   }
 }

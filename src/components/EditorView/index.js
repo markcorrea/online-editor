@@ -9,6 +9,9 @@ import 'ace-builds/src-noconflict/theme-tomorrow'
 import 'ace-builds/src-noconflict/ext-language_tools'
 import * as ace from 'ace-builds/src-noconflict/ace'
 
+import {mediaQueryMD} from 'assets/styles/_mediaQueries.scss'
+import useMediaQuery from 'utils/mediaQuery'
+
 import styles from './index.module.scss'
 
 import {useStore} from 'store'
@@ -30,10 +33,13 @@ const NoFileLoaded = () => (
 
 const EditorView = () => {
   const store = useStore()
-  const {darkMode, loadingFile, currentFile, changeCurrentFile} = store
+  const {darkMode, loadingFile, currentFile, changeCurrentFile, menuWidth} = store
+
+  const mediaQueryMedium = useMediaQuery('min', mediaQueryMD)
+  const editorWidth = !mediaQueryMedium ? '100%' : `calc(100% - ${menuWidth}px)`
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{width: editorWidth}}>
       {loadingFile ? (
         <Spinner />
       ) : !currentFile ? (
