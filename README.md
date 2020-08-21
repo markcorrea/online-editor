@@ -23,7 +23,7 @@ The editor executes all basic functionalities, such as identation, color distinc
 <img alt='code' src='https://github.com/markcorrea/online-editor/blob/master/readme/code.png' />
 
 ### :last_quarter_moon: Dark Mode
-For protection of your eyes, `Online Editor` allows you to switch between `Dark` and `Light` themes. Above the `Files` tree in the Side Menu, there is a switch where you can switch it anytime. 
+For your eyes health, `Online Editor` allows you to switch between `Dark` and `Light` themes. Above the `Files` tree in the Side Menu, there is a switch where you can switch it anytime. 
 
 <img alt='light' src='https://github.com/markcorrea/online-editor/blob/master/readme/light.png' />
 
@@ -31,6 +31,9 @@ For protection of your eyes, `Online Editor` allows you to switch between `Dark`
 Nonetheless, you can use the `Online Editor` on a mobile device. It is totally responsive, and even in your cellphone it is possible to work on those files. When you load the app, you will see a `list icon` in the header. Click on it and the `Side Menu` will slide in. 
 
 <img alt='mobile' src='https://github.com/markcorrea/online-editor/blob/master/readme/mobile.png' />
+
+### :left_right_arrow: Resizable menu
+Suppose your menus are deep, with files inside folders inside folders, or have those huge names like `calculate_how_many_beers_we_can_drink_in_a_night_at_the_oktoberfest.java`. `Online Editor`'s menu is draggable. You can grab the margin of the menu and resize it as much as you can, turning the names in the tree more visible. Note that this feature is available only on the Desktop version.
 
 ## :books: Libraries
 - React
