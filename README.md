@@ -48,6 +48,7 @@ Suppose your menus are deep, with files inside folders inside more folders, or h
 
 - React
 - React Router
+- React Scripts
 - Material-UI
 - Axios
 - Clsx
