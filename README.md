@@ -35,6 +35,8 @@ Nonetheless, you can use the `Online Editor` on a mobile device. It is totally r
 ### :left_right_arrow: Resizable menu
 Suppose your menus are deep, with files inside folders inside folders, or have those huge names like `calculate_how_many_beers_we_can_drink_in_a_night_at_the_oktoberfest.java`. `Online Editor`'s menu is draggable. You can grab the margin of the menu and resize it as much as you can, turning the names in the tree more visible. Note that this feature is available only on the Desktop version.
 
+<img alt='resizable' src='https://github.com/markcorrea/online-editor/blob/master/readme/resizable.png' />
+
 ## :books: Libraries
 - React
 - React Router
