@@ -47,6 +47,7 @@ const EditorView = () => {
       ) : (
         <AceEditor
           mode='java'
+          style={{marginTop: '5px'}}
           theme={darkMode ? 'terminal' : 'tomorrow'}
           onChange={newValue => changeCurrentFile(newValue)}
           value={(currentFile && currentFile.content) || ''}
@@ -58,6 +59,8 @@ const EditorView = () => {
             enableBasicAutocompletion: true,
             enableLiveAutocompletion: true,
             enableSnippets: true,
+            hScrollBarAlwaysVisible: true,
+            vScrollBarAlwaysVisible: true,
           }}
         />
       )}
