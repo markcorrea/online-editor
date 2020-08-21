@@ -2,7 +2,7 @@
 
 The online version can be seen here: https://onlineeditor.netlify.app
 
-<em>If you are from Veezo and have intentions to evaluate this test, check the bugs I found! You can find them at the very end, in the `Notes from the dev` section.</em>
+<em>If you are from `Veezo` and have intentions to evaluate this test, check the bugs I found! You can find them at the very end, in the `Notes from the dev` section.</em>
 
 Online Editor is a test designed to see the qualifications of a candidate for a React Front End Engineer at Veezo. It is a code editor which should allow the user to list the available files in a tree format, load the contents of a chosen file, edit its content and save it. Also, the user should be able to delete a file. Below you can see specific details about installation, requirements, and features.
 
