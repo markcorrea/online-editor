@@ -3,14 +3,14 @@ $lightGray: #d9d8d8;
 $lightBackground: white;
 $lightDefaultFontColor: rgba(0, 0, 0, 0.87);
 $lightGrayFontColor: gray;
-$lightSelectedTreeItem: #1976d2;
+$lightChangedTreeItem: #1976d2;
 $lightTransparentLo: rgba(0, 0, 0, 0.26);
 $lightTransparentMi: rgba(0, 0, 0, 0.12);
 
 $darkBackground: #212121;
 $darkDefaultFontColor: white;
 $darkGrayFontColor: rgba(255, 255, 255, 0.7);
-$darkSelectedTreeItem: #d6bf78;
+$darkChangedTreeItem: #d6bf78;
 $darkTransparentLo: rgba(255, 255, 255, 0.26);
 $darkTransparentMi: rgba(255, 255, 255, 0.12);
 
@@ -25,14 +25,14 @@ $grayLo: #333333;
   lightBackground: $lightBackground;
   lightDefaultFontColor: $lightDefaultFontColor;
   lightGrayFontColor: $lightGrayFontColor;
-  lightSelectedTreeItem: $lightSelectedTreeItem;
+  lightChangedTreeItem: $lightChangedTreeItem;
   lightTransparentLo: $lightTransparentLo;
   lightTransparentMi: $lightTransparentMi;
 
   darkBackground: $darkBackground;
   darkDefaultFontColor: $darkDefaultFontColor;
   darkGrayFontColor: $darkGrayFontColor;
-  darkSelectedTreeItem: $darkSelectedTreeItem;
+  darkChangedTreeItem: $darkChangedTreeItem;
   darkTransparentLo: $darkTransparentLo;
   darkTransparentMi: $darkTransparentMi;
 

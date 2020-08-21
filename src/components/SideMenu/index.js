@@ -17,8 +17,10 @@ import {useStore} from 'store'
 import {
   lightDefaultFontColor,
   darkDefaultFontColor,
-  lightSelectedTreeItem,
-  darkSelectedTreeItem,
+  lightTransparentLo,
+  darkTransparentLo,
+  lightChangedTreeItem,
+  darkChangedTreeItem,
   robotoBoldFontFamily,
   backgroundShadow,
   bigFontSize,
@@ -33,7 +35,7 @@ const treeViewStyles = makeStyles({
   },
 })
 
-const treeItemStyles = darkMode =>
+const treeItemStyles = (darkMode, hasChanged) =>
   makeStyles({
     root: {
       '&&:focus': {
@@ -50,9 +52,12 @@ const treeItemStyles = darkMode =>
       },
     },
     selected: {
-      '& $label': {
-        color: darkMode ? darkSelectedTreeItem : lightSelectedTreeItem,
-        fontFamily: robotoBoldFontFamily,
+      '& >$content': {
+        '& $label': {
+          backgroundColor: `${darkMode ? darkTransparentLo : lightTransparentLo} !important`,
+          ...(hasChanged ? {color: darkMode ? darkChangedTreeItem : lightChangedTreeItem} : {}),
+          ...(hasChanged ? {fontFamily: robotoBoldFontFamily} : {}),
+        },
       },
     },
     content: {}, // needed above inside 'focus' > 'content'
@@ -75,8 +80,10 @@ const SideMenu = () => {
     setMenuWidth,
   } = store
 
+  const hasChanged = currentFile && currentFile.content !== currentFile.original
+
   const treeViewClasses = treeViewStyles()
-  const treeItemClasses = treeItemStyles(darkMode)()
+  const treeItemClasses = treeItemStyles(darkMode, hasChanged)()
 
   const [modalOpen, setModalOpen] = useState(false)
 
