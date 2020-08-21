@@ -11,7 +11,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import {mediaQueryMD} from 'assets/styles/_mediaQueries.scss'
 import useMediaQuery from 'utils/mediaQuery'
 
-import dragMenu from './draggable'
+import resizeMenu from './resizable'
 import {useStore} from 'store'
 
 import {
@@ -142,7 +142,7 @@ const SideMenu = () => {
             onNodeToggle={(_, ids) => setExpandedNodes(ids)}>
             {buildTree(fileTree)}
           </TreeView>
-          {mediaQueryMedium && <div className={styles.draggableBorder} onMouseDown={() => dragMenu(setMenuWidth)} />}
+          {mediaQueryMedium && <div className={styles.draggableBorder} onMouseDown={() => resizeMenu(setMenuWidth)} />}
         </>
       )}
       <Modal

@@ -1,11 +1,11 @@
-const dragMenu = setMenuWidth => {
+const resizeMenu = setMenuWidth => {
   const viewportWidth = document.body.clientWidth
   const viewportHeight = document.body.clientHeight
 
   const isOutOfScreen = event =>
     event.clientX < 10 || event.clientX > viewportWidth - 10 || event.clientY < 10 || event.clientY > viewportHeight - 10
 
-  const handleDraggable = () => {
+  const handleResizable = () => {
     document.body.addEventListener('mousemove', calculate)
     document.body.addEventListener('mouseup', clearListeners)
   }
@@ -23,7 +23,7 @@ const dragMenu = setMenuWidth => {
     document.body.removeEventListener('mousemove', calculate)
     document.body.removeEventListener('mouseup', clearListeners)
   }
-  return handleDraggable()
+  return handleResizable()
 }
 
-export default dragMenu
+export default resizeMenu
