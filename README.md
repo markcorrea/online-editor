@@ -60,6 +60,6 @@ Suppose your menus are deep, with files inside folders inside more folders, or h
 
 We have an issue with the PUT and DELETE endpoints. I imagine they may be intentional, once we have one API for many candidates, but here they are:
 
-- The PUT endpoint doesn't really save the current changes in the file. It returns `200 OK`, sends the payload and returns the response, but the actual changes are not there when we re-fetch the file by its ID.
+- The <strong>PUT</strong> endpoint doesn't really save the current changes in the file. It returns `200 OK`, sends the payload and returns the response, but the actual changes are not there when we re-fetch the file by its <strong>ID</strong>.
 
-- The DELETE endpoint also doesn't really delete the register. it returns `200 OK` and returns the response, but when re-fetching the file tree, the deleted files are still there.
+- The <strong>DELETE</strong> endpoint also doesn't really delete the register. it returns `200 OK` and returns the response, but when re-fetching the file tree, the deleted files are still there.
